@@ -13,16 +13,21 @@ body {
   background-color: var(--bg-deep);
   color: var(--text-primary);
   font-family: var(--font-ui);
-  /* Quasar / NiceGUI defaults to a cool primary. Map it onto brass and steel. */
+  /* Quasar brand colors. Default accent is violet; these stay on brass and steel. */
   --q-primary: var(--accent-brass);
   --q-secondary: var(--accent-steel);
   --q-accent: var(--accent-gold-soft);
-  --q-dark: var(--bg-deep);
-  --q-dark-page: var(--bg-deep);
+  --q-dark: var(--bg-panel-solid);
   --q-positive: var(--signal-buy);
   --q-negative: var(--signal-strong-trim);
   --q-warning: var(--accent-brass);
   --q-info: var(--accent-steel);
+}
+
+body.body--dark {
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  --q-dark-shadow-color: transparent;
 }
 
 ::selection {

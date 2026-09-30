@@ -55,9 +55,16 @@ def chart_theme(tokens: Mapping[str, str] | None = None) -> dict[str, Any]:
         }
 
     ink = {"color": palette["text-primary"], "family": palette["font-ui"]}
+    up = palette["chart-up"]
+    down = palette["chart-down"]
+    # OHLC traces paint the wick only. Candles also fill the body.
+    ohlc = {
+        "increasing": {"line": {"color": up}},
+        "decreasing": {"line": {"color": down}},
+    }
     candle = {
-        "increasing": {"line": {"color": palette["chart-up"]}, "fillcolor": palette["chart-up"]},
-        "decreasing": {"line": {"color": palette["chart-down"]}, "fillcolor": palette["chart-down"]},
+        "increasing": {"line": {"color": up}, "fillcolor": up},
+        "decreasing": {"line": {"color": down}, "fillcolor": down},
     }
     return {
         "layout": {
@@ -105,7 +112,7 @@ def chart_theme(tokens: Mapping[str, str] | None = None) -> dict[str, Any]:
         },
         "data": {
             "candlestick": [candle],
-            "ohlc": [dict(candle)],
+            "ohlc": [ohlc],
         },
     }
 

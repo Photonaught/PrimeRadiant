@@ -178,23 +178,28 @@ def test_plotly_template_smoke() -> None:
         assert register_template() == TEMPLATE_NAME
         fig = go.Figure(go.Scatter(y=[1, 3, 2]))
         tokens = load_tokens()
-        assert fig.layout.paper_bgcolor == tokens["bg-plot-paper"]
-        assert fig.layout.plot_bgcolor == tokens["bg-plot"]
-        assert fig.layout.font.color == tokens["text-primary"]
-        assert fig.layout.xaxis.gridcolor == tokens["chart-grid"]
-        assert fig.layout.xaxis.linecolor == tokens["chart-axis"]
-        assert fig.layout.yaxis.tickfont.color == tokens["chart-tick"]
-        assert fig.layout.hoverlabel.bgcolor == tokens["chart-hover-bg"]
-        assert list(fig.layout.colorway)[:3] == [
+        # Plotly keeps template colors on the template until draw time.
+        applied = fig.layout.template.layout
+        assert applied.paper_bgcolor == tokens["bg-plot-paper"]
+        assert applied.plot_bgcolor == tokens["bg-plot"]
+        assert applied.font.color == tokens["text-primary"]
+        assert applied.xaxis.gridcolor == tokens["chart-grid"]
+        assert applied.xaxis.linecolor == tokens["chart-axis"]
+        assert applied.yaxis.tickfont.color == tokens["chart-tick"]
+        assert applied.hoverlabel.bgcolor == tokens["chart-hover-bg"]
+        assert list(applied.colorway)[:3] == [
             tokens["series-1"],
             tokens["series-2"],
             tokens["series-3"],
         ]
-        candle = go.Figure(
-            go.Candlestick(x=[1], open=[1], high=[2], low=[0.5], close=[1.5])
-        )
-        assert candle.data[0].increasing.line.color == tokens["chart-up"]
-        assert candle.data[0].decreasing.line.color == tokens["chart-down"]
-        assert "168, 158, 210" not in fig.to_json()
+        candle = fig.layout.template.data.candlestick[0]
+        assert candle.increasing.line.color == tokens["chart-up"]
+        assert candle.decreasing.line.color == tokens["chart-down"]
+        ohlc = fig.layout.template.data.ohlc[0]
+        assert ohlc.increasing.line.color == tokens["chart-up"]
+        assert ohlc.decreasing.line.color == tokens["chart-down"]
+        payload = fig.to_json().lower()
+        assert "168, 158, 210" not in payload
+        assert "#636efa" not in payload
     finally:
         pio.templates.default = previous
