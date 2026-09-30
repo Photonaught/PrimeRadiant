@@ -1,0 +1,76 @@
+/* Prime Radiant — ship-library hull (minimal brass / starlight)
+   Palette source of truth. plotly_template.py reads these custom properties.
+   Steel is the cool secondary. Legacy violet names alias steel so a cool
+   purple tint cannot drift back in. */
+
+:root {
+  /* Hull */
+  --bg-deep: #07060a;
+  --bg-deep-mid: #100e14;
+  --bg-panel: rgba(12, 10, 14, 0.78);
+  --bg-panel-solid: #141218;
+  --surface-card: rgba(18, 16, 20, 0.62);
+  --bg-plot-paper: rgba(7, 6, 10, 0);
+  --bg-plot: rgba(16, 14, 20, 0.55);
+  --bg-overlay: rgba(7, 6, 10, 0.72);
+  --glass-sheen: rgba(239, 230, 212, 0.05);
+
+  /* Edges */
+  --border: rgba(196, 160, 106, 0.16);
+  --border-gold: rgba(196, 160, 106, 0.22);
+  --border-gold-strong: rgba(196, 160, 106, 0.40);
+  --glow-soft: rgba(196, 160, 106, 0.08);
+  --shadow-panel: 0 14px 52px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(196, 160, 106, 0.06);
+
+  /* Ink */
+  --accent: #efe6d4;
+  --text-primary: var(--accent);
+  --text-secondary: #cfc6b8;
+  --text-muted: #9a9084;
+  --text-faint: #6a635c;
+
+  /* Brass and steel. --accent-violet is a legacy alias of steel. */
+  --accent-brass: #c4a06a;
+  --accent-gold: var(--accent-brass);
+  --accent-gold-soft: #d4bc90;
+  --accent-steel: #8fa0b0;
+  --accent-steel-dim: rgba(143, 160, 176, 0.22);
+  --accent-cyan: var(--accent-steel);
+  --accent-cyan-dim: var(--accent-steel-dim);
+  --accent-violet: var(--accent-steel);
+  --accent-violet-soft: rgba(196, 160, 106, 0.10);
+
+  /* Signals */
+  --signal-buy: #b4c4c8;
+  --signal-hold: #8a857c;
+  --signal-trim: var(--accent-brass);
+  --signal-strong-trim: #c9a090;
+
+  /* Chart chrome shared with the Plotly template */
+  --chart-axis: rgba(143, 160, 176, 0.55);
+  --chart-grid: var(--accent-steel-dim);
+  --chart-border: var(--border-gold);
+  --chart-tick: var(--text-secondary);
+  --chart-zeroline: rgba(239, 230, 212, 0.28);
+  --chart-spike: rgba(196, 160, 106, 0.65);
+  --chart-hover-bg: rgba(20, 18, 24, 0.94);
+  --chart-hover-border: var(--border-gold-strong);
+  --chart-up: var(--signal-buy);
+  --chart-down: var(--signal-strong-trim);
+
+  --series-1: var(--text-primary);
+  --series-2: var(--accent-brass);
+  --series-3: var(--accent-steel);
+  --series-4: var(--accent-gold-soft);
+  --series-5: var(--signal-buy);
+  --series-6: var(--text-muted);
+  --series-7: var(--signal-strong-trim);
+  --series-8: var(--text-secondary);
+
+  /* Metrics */
+  --radius-panel: 14px;
+  --radius-card: 8px;
+  --radius-chip: 6px;
+  --font-ui: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --nav-height: 56px;
+}
