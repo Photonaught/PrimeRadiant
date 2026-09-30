@@ -1,0 +1,81 @@
+/* Shell paint for the ship-library hull. Every color is a tokens.css variable. */
+
+@import "tokens.css";
+
+html {
+  color-scheme: dark;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  /* Quasar / NiceGUI defaults to a cool primary. Map it onto brass and steel. */
+  --q-primary: var(--accent-brass);
+  --q-secondary: var(--accent-steel);
+  --q-accent: var(--accent-gold-soft);
+  --q-dark: var(--bg-deep);
+  --q-dark-page: var(--bg-deep);
+  --q-positive: var(--signal-buy);
+  --q-negative: var(--signal-strong-trim);
+  --q-warning: var(--accent-brass);
+  --q-info: var(--accent-steel);
+}
+
+::selection {
+  background-color: var(--accent-violet-soft);
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--accent-brass);
+}
+
+a:hover {
+  color: var(--accent-gold-soft);
+}
+
+.pr-panel {
+  background-color: var(--bg-panel);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-panel);
+}
+
+.pr-card {
+  background-color: var(--surface-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-card);
+}
+
+.pr-plot {
+  background-color: var(--bg-plot);
+  border: 1px solid var(--chart-border);
+  border-radius: var(--radius-card);
+}
+
+.pr-secondary {
+  color: var(--text-secondary);
+}
+
+.pr-muted {
+  color: var(--text-muted);
+}
+
+.pr-faint {
+  color: var(--text-faint);
+}
+
+.js-plotly-plot .modebar-btn path {
+  fill: var(--accent-steel);
+}
+
+.js-plotly-plot .modebar-btn:hover path,
+.js-plotly-plot .modebar-btn.active path {
+  fill: var(--accent-brass);
+}
